@@ -7,17 +7,6 @@ terraform {
   }
 }
 
-# Configure the OpenStack Provider
-provider "openstack" {
-  user_name        = "MYUSERNAME"
-  tenant_name      = "RPPNAME"
-  tenant_id        = "RPPID"
-  password         = var.openstack_password
-  user_domain_name = "CCDB"
-  auth_url         = "https://beluga.cloud.computecanada.ca:5000"
-  region           = "RegionOne"
-}
-
 data "local_file" "gateway_user_data" {
   filename = "./cloudinit/gateway.yml"
 }
