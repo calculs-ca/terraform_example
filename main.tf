@@ -19,3 +19,10 @@ output "master_ip" {
 output "minions_ip" {
   value = module.openstack.minions_ip
 }
+
+resource "local_file" "inventory" {
+  content = templatefile("templates/inventory.ini", {
+    master_ip = module.openstack.master_ip
+  })
+  filename = "../ansible/hosts"
+}
